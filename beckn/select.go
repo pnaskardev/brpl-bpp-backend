@@ -1,7 +1,16 @@
 package beckn
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"fmt"
+
+	"github.com/gofiber/fiber/v2"
+)
 
 func Select(c *fiber.Ctx) error {
-	return c.JSON("SELECT CALLED")
+
+	var body = c.Body()
+
+	fmt.Println("INCOMING SELECT REQUEST", body)
+
+	return c.Status(200).JSON("SELECT CALLED")
 }
